@@ -2,5 +2,15 @@
   "name": "Sort Layers",
   "id": "743869473561357241",
   "api": "1.0.0",
-  "main": "code.js"
+  "main": "code.js",
+  "menu": [
+    {
+      "name": "Sort by X position",
+      "command": "sortX"
+    },
+    {
+      "name": "Sort by Y position",
+      "command": "sortY"
+    }
+  ]
 }

@@ -1,38 +1,30 @@
+let selectedCommand = figma.command;
 let mySelection = Array.from(figma.currentPage.selection);
 
-const sortedSelection = mySelection.sort(function(a, b) {
-  // return b.x - a.x;
-  if (a.x < b.x) return 1;
-  if (a.x > b.x) return -1;
-});
+if (mySelection.length > 1) {
+  switch (selectedCommand) {
+    case "sortX":
+      const sortedByX = mySelection.sort(function(a, b) {
+        if (a.x < b.x) return 1;
+        if (a.x > b.x) return -1;
+      });
 
-// sortedSelection.forEach(function(item) {
-//   console.log(item.name);
-//   item.parent.appendChild(item);
-// });
+      sortedByX.forEach(function(item) {
+        item.parent.appendChild(item);
+      });
+      figma.closePlugin("Sorted by X-Position.");
+      break;
+    case "sortY":
+      const sortedByY = mySelection.sort(function(a, b) {
+        if (a.y < b.y) return 1;
+        if (a.y > b.y) return -1;
+      });
 
-// what if you append the children, create a clone of the array, reverse it, and then update x
-// positions? or maybe not even the cloning part?
-
-sortedSelection.forEach(function(item) {
-  // let newSort = sortedSelection.children.clone();
-  // newSort.reverse();
-  console.log(item.name);
-  let currentIndex = sortedSelection.indexOf(item);
-  if (currentIndex !== sortedSelection.length - 1) {
-    let newXP =
-      sortedSelection[currentIndex + 1].x +
-      sortedSelection[currentIndex + 1].width +
-      50;
-    item.x = newXP;
+      sortedByY.forEach(function(item) {
+        item.parent.appendChild(item);
+      });
+      figma.closePlugin("Sorted by Y-Position.");
+    default:
+      figma.closePlugin("Something didn't work.");
   }
-  item.parent.appendChild(item);
-});
-// sortedSelection.forEach(function(item) {
-//   let i = sortedSelection.indexOf(item);
-//   let pLength = item.parent.children.length - 1;
-//   item.parent.insertChild(pLength - i, item);
-// });
-
-// figma.viewport.scrollAndZoomIntoView(mySelection);
-figma.closePlugin("Sorted!");
+} else figma.closePlugin("Please select at least 2 layers.");
