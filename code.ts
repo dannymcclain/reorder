@@ -3,7 +3,7 @@ let mySelection = Array.from(figma.currentPage.selection);
 
 if (mySelection.length > 1) {
   switch (selectedCommand) {
-    case "sortX":
+    case "reorderX":
       const sortedByX = mySelection.sort(function(a, b) {
         if (a.x < b.x) return 1;
         if (a.x > b.x) return -1;
@@ -12,9 +12,9 @@ if (mySelection.length > 1) {
       sortedByX.forEach(function(item) {
         item.parent.appendChild(item);
       });
-      figma.closePlugin("Sorted by X-Position.");
+      figma.closePlugin("→ Reordered by X-Position.");
       break;
-    case "sortY":
+    case "reorderY":
       const sortedByY = mySelection.sort(function(a, b) {
         if (a.y < b.y) return 1;
         if (a.y > b.y) return -1;
@@ -23,7 +23,7 @@ if (mySelection.length > 1) {
       sortedByY.forEach(function(item) {
         item.parent.appendChild(item);
       });
-      figma.closePlugin("Sorted by Y-Position.");
+      figma.closePlugin("↓ Reordered by Y-Position.");
     default:
       figma.closePlugin("Something didn't work.");
   }

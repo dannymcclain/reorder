@@ -1,16 +1,16 @@
 {
-  "name": "Sort Layers",
+  "name": "Reorder",
   "id": "743869473561357241",
   "api": "1.0.0",
   "main": "code.js",
   "menu": [
     {
-      "name": "Sort by X position",
-      "command": "sortX"
+      "name": "Reorder by X position",
+      "command": "reorderX"
     },
     {
-      "name": "Sort by Y position",
-      "command": "sortY"
+      "name": "Reorder by Y position",
+      "command": "reorderY"
     }
   ]
 }
