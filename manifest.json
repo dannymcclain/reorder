@@ -3,6 +3,7 @@
   "id": "743869473561357241",
   "api": "1.0.0",
   "main": "code.js",
+  "editorType": ["figma"],
   "menu": [
     {
       "name": "Reorder by X position",
